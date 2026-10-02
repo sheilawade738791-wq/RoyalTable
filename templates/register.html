@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoyalTable - 注册</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="auth-container">
+
+    <div class="auth-card">
+
+        <div class="logo">
+            <div class="logo-main">ROYAL</div>
+            <div class="logo-sub">TABLE</div>
+        </div>
+
+        <h2>创建账号</h2>
+        <p class="auth-desc">加入 RoyalTable 娱乐扑克大厅</p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-message">
+                    {{ messages[0] }}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('register') }}">
+
+            <div class="input-group">
+                <label>账号</label>
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="请输入账号"
+                    autocomplete="username"
+                    required
+                >
+            </div>
+
+            <div class="input-group">
+                <label>昵称</label>
+                <input
+                    type="text"
+                    name="nickname"
+                    placeholder="请输入游戏昵称"
+                    required
+                >
+            </div>
+
+            <div class="input-group">
+                <label>密码</label>
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="至少6位密码"
+                    autocomplete="new-password"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="auth-button">
+                创建账号
+            </button>
+
+        </form>
+
+        <div class="auth-footer">
+            已经有账号？
+            <a href="{{ url_for('index') }}">返回登录</a>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

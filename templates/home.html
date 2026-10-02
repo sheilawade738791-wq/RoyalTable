@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoyalTable - 大厅</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="lobby-page">
+
+    <header class="top-bar">
+
+        <div class="brand">
+            <div class="brand-main">ROYAL</div>
+            <div class="brand-sub">TABLE</div>
+        </div>
+
+        <div class="user-info">
+            <div class="user-avatar">
+                {{ user["nickname"][0] }}
+            </div>
+
+            <div class="user-details">
+                <strong>{{ user["nickname"] }}</strong>
+                <span>ID：{{ user["user_id"] }}</span>
+            </div>
+
+            <a href="{{ url_for('logout') }}" class="logout-btn">
+                退出
+            </a>
+        </div>
+
+    </header>
+
+
+    <main class="lobby-content">
+
+        <section class="welcome-section">
+
+            <div>
+                <div class="welcome-label">WELCOME TO</div>
+
+                <h1>
+                    ROYAL TABLE
+                </h1>
+
+                <p>
+                    Texas Hold'em · 娱乐扑克大厅
+                </p>
+            </div>
+
+            <div class="balance-card">
+
+                <span>当前虚拟筹码</span>
+
+                <strong>
+                    {{ "{:,}".format(user["balance"]) }}
+                </strong>
+
+                <small>
+                    虚拟娱乐用途，不涉及现金交易
+                </small>
+
+            </div>
+
+        </section>
+
+
+        <section class="lobby-grid">
+
+            <div class="lobby-card">
+
+                <div class="card-icon">♠</div>
+
+                <h3>快速加入</h3>
+
+                <p>
+                    进入正在进行的牌桌
+                </p>
+
+                <button class="gold-button" disabled>
+                    即将开放
+                </button>
+
+            </div>
+
+
+            <div class="lobby-card">
+
+                <div class="card-icon">♣</div>
+
+                <h3>创建牌桌</h3>
+
+                <p>
+                    创建属于自己的娱乐牌局
+                </p>
+
+                <button class="gold-button" disabled>
+                    即将开放
+                </button>
+
+            </div>
+
+
+            <div class="lobby-card">
+
+                <div class="card-icon">♦</div>
+
+                <h3>牌局记录</h3>
+
+                <p>
+                    查看历史牌局与战绩
+                </p>
+
+                <button class="gold-button" disabled>
+                    即将开放
+                </button>
+
+            </div>
+
+
+            <div class="lobby-card">
+
+                <div class="card-icon">♥</div>
+
+                <h3>个人中心</h3>
+
+                <p>
+                    查看账号和个人资料
+                </p>
+
+                <button class="gold-button" disabled>
+                    即将开放
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <section class="notice-panel">
+
+            <div class="notice-title">
+                ROYAL TABLE
+            </div>
+
+            <p>
+                当前为本地测试版本。牌桌、实时对战、聊天、
+                游戏记录以及管理员系统将在后续模块中逐步接入。
+            </p>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

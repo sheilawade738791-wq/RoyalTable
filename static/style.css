@@ -1,0 +1,788 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-main: #050807;
+    --bg-panel: rgba(15, 27, 22, 0.92);
+    --bg-input: rgba(255, 255, 255, 0.045);
+
+    --gold: #d6b46a;
+    --gold-light: #f0d995;
+    --gold-dark: #8f6d2e;
+
+    --green: #123c2c;
+    --green-light: #1d5a40;
+
+    --text-main: #f4f1e7;
+    --text-muted: #9b9f98;
+
+    --border: rgba(214, 180, 106, 0.25);
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family:
+        "Segoe UI",
+        "Microsoft YaHei",
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(25, 79, 55, 0.32),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 15% 85%,
+            rgba(214, 180, 106, 0.08),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #030504 0%,
+            #07100c 45%,
+            #020403 100%
+        );
+
+    color: var(--text-main);
+    min-height: 100vh;
+}
+
+
+/* =========================
+   登录 / 注册页面
+========================= */
+
+.auth-container {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px 20px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* 背景光 */
+
+.auth-container::before {
+    content: "";
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(36, 108, 74, 0.2),
+            transparent 68%
+        );
+
+    filter: blur(20px);
+
+    pointer-events: none;
+}
+
+
+/* 金色装饰线 */
+
+.auth-container::after {
+    content: "";
+
+    position: absolute;
+
+    width: 900px;
+    height: 900px;
+
+    border: 1px solid rgba(214, 180, 106, 0.06);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.auth-card {
+    width: 420px;
+    max-width: 100%;
+
+    padding: 45px 42px 38px;
+
+    position: relative;
+    z-index: 2;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(21, 38, 30, 0.96),
+            rgba(7, 14, 11, 0.97)
+        );
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.65),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+    backdrop-filter: blur(18px);
+}
+
+
+/* 卡片顶部金色线 */
+
+.auth-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 15%;
+
+    width: 70%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+}
+
+
+/* Logo */
+
+.logo {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.logo-main {
+    font-family: Georgia, serif;
+
+    font-size: 38px;
+
+    font-weight: 600;
+
+    letter-spacing: 8px;
+
+    color: var(--gold-light);
+
+    text-shadow:
+        0 0 20px rgba(214, 180, 106, 0.18);
+}
+
+.logo-sub {
+    margin-top: 4px;
+
+    font-size: 11px;
+
+    letter-spacing: 8px;
+
+    color: var(--text-muted);
+}
+
+
+/* 小装饰 */
+
+.logo::after {
+    content: "♠  ♦  ♣  ♥";
+
+    display: block;
+
+    margin-top: 18px;
+
+    font-size: 14px;
+
+    letter-spacing: 8px;
+
+    color: var(--gold-dark);
+}
+
+
+.auth-card h2 {
+    text-align: center;
+
+    font-size: 23px;
+
+    font-weight: 500;
+
+    margin-bottom: 9px;
+}
+
+
+.auth-desc {
+    text-align: center;
+
+    color: var(--text-muted);
+
+    font-size: 13px;
+
+    margin-bottom: 30px;
+}
+
+
+/* 输入框 */
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 12px;
+
+    color: #c7c8c2;
+
+    letter-spacing: 1px;
+}
+
+.input-group input {
+    width: 100%;
+
+    height: 48px;
+
+    padding: 0 15px;
+
+    border-radius: 9px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    outline: none;
+
+    background: var(--bg-input);
+
+    color: white;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s,
+        background 0.2s;
+}
+
+.input-group input::placeholder {
+    color: #626761;
+}
+
+.input-group input:focus {
+    border-color: rgba(214, 180, 106, 0.65);
+
+    background: rgba(255, 255, 255, 0.065);
+
+    box-shadow:
+        0 0 0 3px rgba(214, 180, 106, 0.07);
+}
+
+
+/* 金色按钮 */
+
+.auth-button {
+    width: 100%;
+
+    height: 49px;
+
+    margin-top: 8px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    color: #15130d;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a9843f,
+            #ead18a 48%,
+            #a9843f
+        );
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.35);
+
+    transition:
+        transform 0.2s,
+        filter 0.2s,
+        box-shadow 0.2s;
+}
+
+.auth-button:hover {
+    transform: translateY(-1px);
+
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 10px 30px rgba(214, 180, 106, 0.18);
+}
+
+.auth-button:active {
+    transform: translateY(0);
+}
+
+
+/* 底部 */
+
+.auth-footer {
+    text-align: center;
+
+    margin-top: 25px;
+
+    font-size: 13px;
+
+    color: var(--text-muted);
+}
+
+.auth-footer a {
+    color: var(--gold-light);
+
+    text-decoration: none;
+
+    margin-left: 5px;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* 提示 */
+
+.flash-message {
+    margin-bottom: 18px;
+
+    padding: 11px 13px;
+
+    border-radius: 8px;
+
+    border: 1px solid rgba(214, 180, 106, 0.25);
+
+    background: rgba(214, 180, 106, 0.07);
+
+    color: var(--gold-light);
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   大厅
+========================= */
+
+.lobby-page {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(24, 82, 56, 0.25),
+            transparent 35%
+        );
+}
+
+
+.top-bar {
+    height: 76px;
+
+    padding: 0 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgba(214, 180, 106, 0.12);
+
+    background: rgba(3, 8, 6, 0.88);
+
+    backdrop-filter: blur(15px);
+}
+
+
+.brand-main {
+    font-family: Georgia, serif;
+
+    font-size: 23px;
+
+    letter-spacing: 5px;
+
+    color: var(--gold-light);
+}
+
+.brand-sub {
+    font-size: 8px;
+
+    letter-spacing: 5px;
+
+    color: var(--text-muted);
+
+    text-align: center;
+}
+
+
+.user-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold-dark),
+            var(--gold)
+        );
+
+    color: #17130a;
+
+    font-weight: 700;
+}
+
+.user-details {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.user-details strong {
+    font-size: 13px;
+}
+
+.user-details span {
+    color: var(--text-muted);
+
+    font-size: 10px;
+}
+
+
+.logout-btn {
+    margin-left: 15px;
+
+    color: var(--text-muted);
+
+    text-decoration: none;
+
+    font-size: 12px;
+}
+
+.logout-btn:hover {
+    color: var(--gold-light);
+}
+
+
+.lobby-content {
+    width: min(1180px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding: 55px 0;
+}
+
+
+.welcome-section {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 42px;
+}
+
+
+.welcome-label {
+    color: var(--gold);
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 12px;
+}
+
+.welcome-section h1 {
+    font-family: Georgia, serif;
+
+    font-size: 46px;
+
+    font-weight: 500;
+
+    letter-spacing: 6px;
+}
+
+.welcome-section p {
+    color: var(--text-muted);
+
+    margin-top: 10px;
+}
+
+
+.balance-card {
+    min-width: 230px;
+
+    padding: 20px 24px;
+
+    border-radius: 12px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(14, 29, 22, 0.75);
+}
+
+.balance-card span {
+    display: block;
+
+    color: var(--text-muted);
+
+    font-size: 11px;
+}
+
+.balance-card strong {
+    display: block;
+
+    margin-top: 8px;
+
+    color: var(--gold-light);
+
+    font-size: 28px;
+
+    font-family: Georgia, serif;
+}
+
+.balance-card small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #656a64;
+
+    font-size: 9px;
+}
+
+
+.lobby-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+
+.lobby-card {
+    min-height: 230px;
+
+    padding: 28px 22px;
+
+    text-align: center;
+
+    border-radius: 13px;
+
+    border: 1px solid rgba(214, 180, 106, 0.13);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 39, 30, 0.78),
+            rgba(7, 14, 11, 0.85)
+        );
+
+    transition:
+        transform 0.2s,
+        border-color 0.2s;
+}
+
+.lobby-card:hover {
+    transform: translateY(-3px);
+
+    border-color: rgba(214, 180, 106, 0.35);
+}
+
+
+.card-icon {
+    font-size: 38px;
+
+    color: var(--gold);
+
+    margin-bottom: 17px;
+}
+
+.lobby-card h3 {
+    font-size: 16px;
+
+    font-weight: 500;
+}
+
+.lobby-card p {
+    color: var(--text-muted);
+
+    font-size: 12px;
+
+    margin: 10px 0 20px;
+}
+
+
+.gold-button {
+    padding: 9px 20px;
+
+    border-radius: 7px;
+
+    border: 1px solid rgba(214, 180, 106, 0.2);
+
+    background: rgba(214, 180, 106, 0.05);
+
+    color: var(--gold-light);
+
+    font-size: 11px;
+}
+
+
+.notice-panel {
+    margin-top: 30px;
+
+    padding: 20px 24px;
+
+    border-left: 2px solid var(--gold-dark);
+
+    background: rgba(214, 180, 106, 0.035);
+}
+
+.notice-title {
+    color: var(--gold);
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 8px;
+}
+
+.notice-panel p {
+    color: var(--text-muted);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   手机端
+========================= */
+
+@media (max-width: 800px) {
+
+    .auth-card {
+        padding: 35px 25px 30px;
+    }
+
+    .logo-main {
+        font-size: 31px;
+    }
+
+    .top-bar {
+        padding: 0 18px;
+    }
+
+    .lobby-content {
+        width: calc(100% - 28px);
+
+        padding: 35px 0;
+    }
+
+    .welcome-section {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .welcome-section h1 {
+        font-size: 34px;
+    }
+
+    .balance-card {
+        width: 100%;
+    }
+
+    .lobby-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .auth-container {
+        padding: 18px;
+    }
+
+    .auth-card {
+        border-radius: 14px;
+    }
+
+    .user-details {
+        display: none;
+    }
+
+    .lobby-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome-section h1 {
+        font-size: 29px;
+
+        letter-spacing: 3px;
+    }
+}
