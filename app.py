@@ -38,6 +38,10 @@ def init_db():
     conn.close()
 
 
+# Gunicorn 启动时也会执行数据库初始化
+init_db()
+
+
 @app.route("/")
 def index():
     if "user_id" in session:
@@ -48,6 +52,7 @@ def index():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+
     if request.method == "POST":
 
         username = request.form.get("username", "").strip()
@@ -181,8 +186,6 @@ def logout():
 
 
 if __name__ == "__main__":
-
-    init_db()
 
     print("================================")
     print("      ROYAL TABLE 已启动")
