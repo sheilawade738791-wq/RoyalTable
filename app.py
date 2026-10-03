@@ -1,4 +1,3 @@
-```python
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
@@ -36,15 +35,15 @@ def register():
         nickname = request.form.get("nickname", "").strip()
 
         if not username or not password or not nickname:
-            flash("请填写完整信息")
+            flash("请填写完整信�?)
             return redirect(url_for("register"))
 
         if len(username) < 3:
-            flash("账号至少需要3个字符")
+            flash("账号至少需�?个字�?)
             return redirect(url_for("register"))
 
         if len(password) < 6:
-            flash("密码至少需要6个字符")
+            flash("密码至少需�?个字�?)
             return redirect(url_for("register"))
 
         conn = get_db()
@@ -56,7 +55,7 @@ def register():
 
         if existing:
             conn.close()
-            flash("该账号已经存在")
+            flash("该账号已经存�?)
             return redirect(url_for("register"))
 
         user_id = "RT" + secrets.token_hex(4).upper()
@@ -98,17 +97,17 @@ def login():
 
     if not user:
         conn.close()
-        flash("账号或密码错误")
+        flash("账号或密码错�?)
         return redirect(url_for("index"))
 
     if user["status"] != "normal":
         conn.close()
-        flash("该账号已被禁用")
+        flash("该账号已被禁�?)
         return redirect(url_for("index"))
 
     if not check_password_hash(user["password_hash"], password):
         conn.close()
-        flash("账号或密码错误")
+        flash("账号或密码错�?)
         return redirect(url_for("index"))
 
     conn.execute(
@@ -159,7 +158,7 @@ def logout():
 
 if __name__ == "__main__":
     print("================================")
-    print("      ROYAL TABLE 已启动")
+    print("      ROYAL TABLE 已启�?)
     print("================================")
     print("本机地址：http://127.0.0.1:5001")
     print("局域网地址：http://你的电脑IP:5001")
