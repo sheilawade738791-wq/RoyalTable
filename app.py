@@ -8,7 +8,13 @@ import os
 app = Flask(__name__)
 
 BASE_DIR = Path(__file__).resolve().parent
-DB_PATH = BASE_DIR / "royaltable.db"
+
+# Deplexo 部署环境使用 /tmp 可写目录
+# 本地运行仍然把数据库放在 RoyalTable 文件夹
+if os.environ.get("DEPLOYMENT") or os.environ.get("PORT") == "3000":
+    DB_PATH = Path("/tmp/royaltable.db")
+else:
+    DB_PATH = BASE_DIR / "royaltable.db"
 
 app.secret_key = os.environ.get("SECRET_KEY", secrets.token_hex(32))
 
@@ -38,7 +44,6 @@ def init_db():
     conn.close()
 
 
-# Gunicorn 启动时也会执行数据库初始化
 init_db()
 
 
